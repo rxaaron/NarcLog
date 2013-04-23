@@ -1,5 +1,5 @@
 <?php
-$store_prefix="North";
+$store_prefix=$_COOKIE['store'];
 $drugtable= $store_prefix."_Drugs";
 $transactiontable= $store_prefix."_Transactions";
 

@@ -20,7 +20,7 @@
     </head>
     <body>
         <div id="banner">
-            <a href="http://gmapserver/"><img src="rsc/GMAP_Logo.png" alt="GMAP/Encore" width ="250" height="100"></a>
+            <a href="http://gmapserver.grcs.local/"><img src="rsc/GMAP_Logo.png" alt="GMAP/Encore" width ="250" height="100"></a>
         </div>            
         <div id="menu">
             <h2>Entry</h2>

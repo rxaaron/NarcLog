@@ -1,5 +1,5 @@
 <?php
-$store_prefix="North";
+$store_prefix=$_COOKIE['store'];
 $tablename=$store_prefix."_Drugs";
 include_once('dbconn.php');
 
