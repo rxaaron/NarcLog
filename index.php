@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -35,22 +36,21 @@
         </div>
         <div id="main">
             <div id="title">
-                <h1>Manifest Management</h1>
+                <h1>GMAP <?php echo $_COOKIE['store']; ?> C-II Log</h1>
             </div>
             <div id="content">
                 <?php 
-                    if(isset($_GET['ID'])){
-                        include_once 'mfst_edit.php';
-                    }elseif(isset($_GET['goto'])){
-                        include_once 'mfst_edit.php';
+                    if(!isset($_COOKIE['store'])){
+                        include_once('changestore.php');
                     }else{
-                        include_once 'mfst_entry.php';
+                        include_once('newrx.php');
                     }
                 ?>
             </div>
         </div>            
         <div id="sidebar">
-        &nbsp;</div>
+            <p><a href="index.php" onclick="return changepage('changestore.php');">Change Store</a></p>
+    </div>
     </body>
 </html>
 

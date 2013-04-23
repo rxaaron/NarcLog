@@ -76,4 +76,7 @@ body
 {position:fixed; top:0px; right:0px; height:100%; width:260px; overflow:auto; background:#e0e0e0; border-left:2px solid #c0c0c0;}
 
 #sidebar p
-{margin:10px;}
+{display:block; margin:10px;}
+
+#sidebar a
+{color:#b40404;}
