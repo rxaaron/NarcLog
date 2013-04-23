@@ -11,7 +11,9 @@
                 <tr><td>Brand Name:</td><td><input type="text" name="brand" autocomplete="off" /></td></tr>
                 <tr><td>Generic Name:</td><td><input type="text" name="generic" autocomplete="off" /></td></tr>
                 <tr><td>Strength:</td><td><input type="text" name="strength" autocomplete="off" /></td></tr>
+                <tr><td>Is Brand?</td><td><input type="checkbox" name="isbrand" /></td></tr>
                 <tr><td>Form:</td><td><?php include_once('scripts/form_list.php'); ?></td></tr>
+                <tr><td>On Hand:</td><td><input type="text" name="onhand" autocomplete="off" /></td></tr>
                 <tr><td>Comments:</td><td><textarea name="comments" columns="30" rows="5"></textarea></td></tr>
                 <tr><td>Password:</td><td><input type="password" name="empid" autocomplete="off" /></td></tr>
             </table>

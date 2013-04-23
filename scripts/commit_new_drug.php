@@ -39,11 +39,22 @@ if (!$db) {
         $comments=NULL;
     }
     $formID=$_POST['formid'];
+    if(isset($_POST['isbrand'])){
+        $isbrand="TRUE";
+    }else{
+        $isbrand="FALSE";
+    }
+        if(isset($_POST['onhand'])){
+        $onhand=$_POST['onhand'];
+    }else{
+        echo "Please enter an On Hand amount.";
+    }
     
-    $insert=$db->query("INSERT INTO ".$tablename." (BrandName, GenericName, Strength, FormID, Comments) VALUES ('".$brand."','".$generic."','".$strength."',".$formID.",'".$comments."');");
+    $insert=$db->query("INSERT INTO ".$tablename." (BrandName, GenericName, Strength, IsBrand, FormID, Comments, OnHand) VALUES ('".$brand."','".$generic."','".$strength."',".$isbrand.",".$formID.",'".$comments."',".$onhand.");");
     
     if($insert){
         echo "New Drug Entered OK!";
+        echo "<br /><a href=\"../newdrug.php\">Enter Another Drug</a>";
     }
 }
 ?>
