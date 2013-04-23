@@ -1,3 +1,3 @@
 <?php
-    echo "Testing symlinks.";
+    include_once('scripts/form_list.php');
 ?>
