@@ -1,0 +1,79 @@
+/* 
+    Document   : manifest
+    Created on : Apr 16, 2013, 11:07:32 AM
+    Author     : rxaaron
+    Description: Clean interface for quick access
+*/
+
+body
+{margin:0; padding:0; color:#303030; background:#fafafa; font:76% Verdana,Tahoma,sans-serif;}
+
+/**Top of the page stuff**/
+#banner
+{width:260px; height:100px; top:10px; left:5px; position:fixed;}
+
+#banner a img
+{outline:none; border:none;}
+
+#title
+{position:absolute; top:5px; height:45px; left:0px; width:100%; text-align:center;}
+
+/**Menu Bar**/
+#menu
+{position:fixed; top:120px; left:0px; height:100%; width:260px; overflow:auto; background:#e0e0e0; border-right:2px solid #c0c0c0; border-top:2px solid #c0c0c0; text-align:right; border-top-right-radius:15px;}
+
+#menu p
+{margin:10px;}
+
+#menu a
+{display:block; text-align:right; margin-left:50px; margin-top:10px; padding:5px 18px 5px 20px; color:#606060; background:#eeeeee; font-size:1.5em; font-weight:normal; text-decoration:none; border-top-left-radius:12px; border-bottom-left-radius:12px;}
+
+#menu a:hover 
+{color:#303030; background:#ffffff;}
+
+#menu h2
+{display:block; text-align:left; margin-top:20px; margin-bottom:10px; margin-right:25px; padding:5px 18px 5px 20px; color:#b40404; background:#eeeeee; font-size:1.8em; font-weight:bold; text-decoration:none; border-top-right-radius:12px; border-bottom-right-radius:12px; border-bottom:3px solid #0404b4; border-top:1px solid #0404b4; border-right:2px solid #0404b4;}
+
+/**Main Area**/
+#main
+{position:absolute; top:0px; left:265px; right:265px; bottom:0px;}
+
+/**Content Area**/
+#content
+{position:absolute; top:55px; left:0px; height:auto; width:100%; overflow:auto; padding:20px;}
+
+#content table
+{border:0px;}
+
+#content table.list
+{border-collapse:collapse; border:1px solid #585858; padding:3px 7px 2px 7px;}
+
+#content col.datesent
+{width:100px;}
+
+#content col.location
+{width:200px;}
+
+#content col.numpages
+{width:75px;}
+
+#content col.comments
+{width:400px;}
+
+#content col.status
+{width:150px;}
+
+#content th
+{text-align:left; background-color:#585858; color:#ffffff;}
+
+#content td
+{padding:3px;}
+#content input.entry
+{padding:10px 125px 10px 125px;}
+
+/**Side Bar**/
+#sidebar
+{position:fixed; top:0px; right:0px; height:100%; width:260px; overflow:auto; background:#e0e0e0; border-left:2px solid #c0c0c0;}
+
+#sidebar p
+{margin:10px;}
