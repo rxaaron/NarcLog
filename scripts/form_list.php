@@ -8,7 +8,7 @@ if (!$db) {
     $query=$db->query("SELECT ID, Description FROM DrugForm WHERE Active=true ORDER BY Description;");
     
     if ($query){
-        echo "<select name=\"drugform\" id=\"drugform\">";
+        echo "<select name=\"formid\" id=\"formid\">";
         while($result=$query->fetch_object()){
             if($result->ID==2){
                 echo "<option value=\"".$result->ID."\" label=\"".$result->Description."\" selected>".$result->Description."</option>";
