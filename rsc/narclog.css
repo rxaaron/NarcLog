@@ -38,6 +38,9 @@ body
 #main
 {position:absolute; top:0px; left:265px; right:125px; bottom:0px;}
 
+#main div.storechange
+{position:absolute; top:50px; left:50px;}
+
 /**Content Area**/
 #content
 {position:absolute; display:inline; top:55px; left:0px; right:-2px; bottom:0px; overflow:auto; padding:20px;}

@@ -13,12 +13,13 @@
                 xmlhttp.open("POST",pagename,false);
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xmlhttp.send();
-                document.getElementById("content").innerHTML=xmlhttp.responseText;  
+                document.getElementById("main").innerHTML=xmlhttp.responseText;  
                 return false;
             }
             function searchbox(inpt,actn) {
                 document.getElementById("search").style.height='300px';
                 document.getElementById("entry").style.top='335px';
+                document.getElementById("entry").innerHTML="";
                 var xmlhttp;
                 xmlhttp=new XMLHttpRequest();
                 xmlhttp.open("POST","scripts/search.php",false);
@@ -59,18 +60,13 @@
             <a href="index.php" onclick="return changepage('systemadmin.php');">System</a>
         </div>
         <div id="main">
-            <div id="title">
-                <h1>GMAP <?php echo $_COOKIE['store']; ?> C-II Log</h1>
-            </div>
-            <div id="content">
-                <?php 
+            <?php 
                     if(!isset($_COOKIE['store'])){
                         include_once('changestore.php');
                     }else{
                         include_once('newrx.php');
                     }
                 ?>
-            </div>
         </div>            
         <div id="sidebar">
             <p><a href="index.php" onclick="return changepage('changestore.php');">Change Store</a></p>

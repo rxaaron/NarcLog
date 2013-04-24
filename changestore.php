@@ -1,4 +1,4 @@
-<?php echo "<br /><br />Current store: ".$_COOKIE['store']."<br /><br />"; ?>
+<?php echo "<div class=\"storechange\"><br /><br />Current store: ".$_COOKIE['store']."<br /><br />"; ?>
 
 <form name="storechange" id="storechange" action="scripts/set_store.php" method="POST">
     <select name="storename" id="storename">
@@ -9,3 +9,4 @@
     </select>
     <input type="submit" name="gobabygo" value="Change Store" />
 </form>
+</div>
