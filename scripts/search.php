@@ -1,0 +1,1 @@
+<a href="index.php" onclick="return resultlist('blah','blah');">bob</a>

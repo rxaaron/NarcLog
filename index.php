@@ -15,7 +15,31 @@
                 xmlhttp.send();
                 document.getElementById("content").innerHTML=xmlhttp.responseText;  
                 return false;
-            };
+            }
+            function searchbox(inpt,actn) {
+                document.getElementById("search").style.height='500px';
+                document.getElementById("entry").style.top='535px';
+                var xmlhttp;
+                xmlhttp=new XMLHttpRequest();
+                xmlhttp.open("POST","scripts/search.php",false);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send("queryString="+inpt+"&action="+actn);
+                document.getElementById("results").innerHTML=xmlhttp.responseText;
+                return false;
+            }
+            function resultlist(drugid,source) {
+                document.getElementById("search").style.height='50px';
+                document.getElementById("entry").style.top='85px';
+                document.getElementById("results").innerHTML="";
+                document.getElementById("inputStringBox").value="";
+                var xmlhttp2;
+                xmlhttp2=new XMLHttpRequest();
+                xmlhttp2.open("POST","scripts/action.php",false);
+                xmlhttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp2.send("drugid="+drugid+"&source="+source);
+                document.getElementById("entry").innerHTML=xmlhttp2.responseText;
+                return false;
+            }
          </script>
     </head>
     <body>

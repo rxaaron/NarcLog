@@ -16,11 +16,11 @@ body
 {outline:none; border:none;}
 
 #title
-{position:absolute; top:5px; height:45px; left:0px; width:100%; text-align:center;}
+{position:fixed; top:5px; height:45px; left:0px; width:100%; text-align:center;}
 
 /**Menu Bar**/
 #menu
-{position:fixed; top:120px; left:0px; height:100%; width:260px; overflow:auto; background:#e0e0e0; border-right:2px solid #c0c0c0; border-top:2px solid #c0c0c0; text-align:right; border-top-right-radius:15px;}
+{position:fixed; top:120px; left:0px; bottom:0px; width:260px; overflow-y:auto; overflow-x:hidden; background:#e0e0e0; border-right:2px solid #c0c0c0; border-top:2px solid #c0c0c0; text-align:right; border-top-right-radius:15px;}
 
 #menu p
 {margin:10px;}
@@ -36,11 +36,11 @@ body
 
 /**Main Area**/
 #main
-{position:absolute; top:0px; left:265px; right:265px; bottom:0px;}
+{position:absolute; top:0px; left:265px; right:125px; bottom:0px;}
 
 /**Content Area**/
 #content
-{position:absolute; top:55px; left:0px; height:auto; width:100%; overflow:auto; padding:20px;}
+{position:absolute; display:inline; top:55px; left:0px; right:-2px; bottom:0px; overflow:auto; padding:20px;}
 
 #content table
 {border:0px;}
@@ -73,7 +73,7 @@ body
 
 /**Side Bar**/
 #sidebar
-{position:fixed; top:0px; right:0px; height:100%; width:260px; overflow:auto; background:#e0e0e0; border-left:2px solid #c0c0c0;}
+{position:fixed; top:0px; right:0px; height:100%; width:120px; overflow:auto; background:#e0e0e0; border-left:2px solid #c0c0c0;}
 
 #sidebar p
 {display:block; margin:10px;}
@@ -82,3 +82,12 @@ body
 {color:#b40404;}
 
 /**Searching Pages**/
+
+#search
+{position:absolute; display:block; left:5px; top:5px; right:5px; height:50px; border-top:1px solid #0404b4; border-left:1px solid #0404b4; border-right:2px solid #0404b4; border-bottom:3px solid #0404b4; border-radius:10px; padding:10px;}
+
+#results
+{position:absolute; display:block; padding:5px; left:0px; top:50px; right:0px; bottom:0px; overflow:auto;}
+
+#entry
+{position:absolute; display:block; margin:5px; border-top:1px solid #b40404; border-left:1px solid #b40404; border-right:2px solid #b40404; border-bottom:3px solid #b40404; top:85px; left:5px; right:5px; bottom:5px; border-radius:10px; padding:10px;}
