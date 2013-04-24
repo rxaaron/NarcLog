@@ -17,8 +17,8 @@
                 return false;
             }
             function searchbox(inpt,actn) {
-                document.getElementById("search").style.height='500px';
-                document.getElementById("entry").style.top='535px';
+                document.getElementById("search").style.height='300px';
+                document.getElementById("entry").style.top='335px';
                 var xmlhttp;
                 xmlhttp=new XMLHttpRequest();
                 xmlhttp.open("POST","scripts/search.php",false);
