@@ -4,7 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>C-II Log</title>
-        <link rel="stylesheet" href="rsc/narclog.css" type="text/css" />
+        <link rel="stylesheet" href="rsc/narclog.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="rsc/print.css" type="text/css" media="print" />
         <link rel="shortcut icon" href="rsc/favicon.ico" />
         <script>
             function changepage(pagename){
@@ -33,12 +34,21 @@
                 document.getElementById("entry").style.top='85px';
                 document.getElementById("results").innerHTML="";
                 document.getElementById("inputStringBox").value="";
-                var xmlhttp2;
-                xmlhttp2=new XMLHttpRequest();
-                xmlhttp2.open("POST","scripts/action.php",false);
-                xmlhttp2.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                xmlhttp2.send("drugid="+drugid+"&source="+source);
+                var xmlhttp;
+                xmlhttp=new XMLHttpRequest();
+                xmlhttp.open("POST","scripts/action.php",false);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send("drugid="+drugid+"&source="+source);
                 document.getElementById("entry").innerHTML=xmlhttp2.responseText;
+                return false;
+            }
+            function createnew(newwhat){
+                var xmlhttp;
+                xmlhttp=new XMLHttpRequest();
+                xmlhttp.open("POST",newwhat,false);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send();
+                document.getElementById("entry").innerHTML=xmlhttp.responseText;
                 return false;
             }
          </script>
@@ -52,7 +62,8 @@
             <a href="index.php" onclick="return changepage('newrx.php');">Dispense RX</a>
             <a href="index.php" onclick="return changepage('newinvoice.php');">Receive Order</a>
             <h2>Reports</h2>
-            <a href="index.php" onclick="return changepage('onhand.php');">Check Inventory</a>
+            <a href="index.php" onclick="return changepage('onhand.php');">Check On Hand</a>
+            <a href="index.php" onclick="return changepage('inventory.php');">Quick Inventory</a>
             <a href="index.php" onclick="return changepage('adminreports.php');">Administrative</a>
             <h2>Administration</h2>
             <a href="index.php" onclick="return changepage('drugadmin.php');">Drugs</a>

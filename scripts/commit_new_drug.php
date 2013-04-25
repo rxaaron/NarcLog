@@ -54,7 +54,7 @@ if (!$db) {
     
     if($insert){
         echo "New Drug Entered OK!";
-        echo "<br /><a href=\"../newdrug.php\">Enter Another Drug</a>";
+        echo "<br /><a href=\"../index.php\">Return Home</a>";
     }
 }
 ?>

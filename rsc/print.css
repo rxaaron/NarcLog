@@ -1,0 +1,42 @@
+/* 
+    Document   : print
+    Created on : Apr 25, 2013, 11:43:29 AM
+    Author     : ataylor
+    Description: to allow reasonable printing of Inventory and Reports
+*/
+
+body
+{margin:0; padding:0; font:76% Verdana,Tahoma,sans-serif;}
+
+/**Top of the page stuff**/
+#banner
+{display:none;}
+
+/**Menu Bar**/
+#menu
+{display:none;}
+
+/**Main Area**/
+#main
+{position:absolute; top:0px; left:0px; right:0px; bottom:0px;}
+
+#title
+{position:absolute; top:5px; height:45px; left:0px; right:0px; text-align:center;}
+/**Content Area**/
+#content
+{position:absolute; top:55px; left:0px; right:0px; bottom:0px; padding:5px;}
+
+/**Side Bar**/
+#sidebar
+{display:none;}
+
+/**Searching Pages**/
+
+#search
+{display:none;}
+
+#results
+{display:none;}
+
+#entry
+{position:absolute; top:5px; left:5px; right:5px; bottom:5px;}
