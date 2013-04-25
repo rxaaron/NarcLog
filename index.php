@@ -39,7 +39,7 @@
                 xmlhttp.open("POST","scripts/action.php",false);
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xmlhttp.send("drugid="+drugid+"&source="+source);
-                document.getElementById("entry").innerHTML=xmlhttp2.responseText;
+                document.getElementById("entry").innerHTML=xmlhttp.responseText;
                 return false;
             }
             function createnew(newwhat){
@@ -84,4 +84,3 @@
     </div>
     </body>
 </html>
-

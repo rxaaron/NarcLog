@@ -104,3 +104,9 @@ body
 
 #entry
 {position:absolute; display:block; margin:5px; border-top:1px solid #b40404; border-left:1px solid #b40404; border-right:2px solid #b40404; border-bottom:3px solid #b40404; top:85px; left:5px; right:5px; bottom:5px; border-radius:10px; padding:10px;}
+
+#entry p.tacenter
+{text-align:center;}
+
+#entry div.tacenter
+{text-align:center;}

@@ -67,3 +67,6 @@ body
 
 #entry
 {position:absolute; top:5px; left:5px; right:5px; bottom:5px;}
+
+#entry p.tacenter
+{text-align:center;}
