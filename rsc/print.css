@@ -26,6 +26,33 @@ body
 #content
 {position:absolute; top:55px; left:0px; right:0px; bottom:0px; padding:5px;}
 
+#content table
+{border-collapse:collapse; table-layout:fixed; border:1px solid #000000;}
+
+#content td
+{border:1px solid #000000;}
+
+#content col.listamount
+{width:75px;}
+
+#content col.listndc
+{width:125px;}
+
+#content col.listform
+{width:75px;}
+
+#content col.liststrength
+{width:75px;}
+
+#content col.listdrug
+{width:400px;}
+
+#content td.taright
+{text-align:right;}
+
+#content td.tacenter
+{text-align:center;}
+
 /**Side Bar**/
 #sidebar
 {display:none;}
