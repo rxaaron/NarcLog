@@ -11,6 +11,8 @@
     
     if($actionid=="rx"){
         //new rx transaction
+     
+    }elseif($actionid=="transactions"){
         
     }elseif($actionid=="invoice"){
         //new invoice transaction
