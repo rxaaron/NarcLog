@@ -119,3 +119,6 @@ body
 
 #entry div.tacenter
 {text-align:center;}
+
+#timediv
+{display:none;}

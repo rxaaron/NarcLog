@@ -36,13 +36,23 @@
                         }
                     }
                 }
-            if($resultsdrug->Exact==1){
-                $onhandamount=$resultsdrug->OnHand;
-            }else{
-                $onhandamount=  number_format($resultsdrug->OnHand);
-            }
+                if($resultsdrug->Exact==1){
+                    $onhandamount=$resultsdrug->OnHand;
+                }else{
+                    $onhandamount=  number_format($resultsdrug->OnHand);
+                }
             echo "<h2>Quantity On Hand:  ".$onhandamount."</h2></div>";
             }
+            echo "<br /><hr><br /><h3>Manually update amount.</h3>";
+            echo "<form name=\"updateonhand\" id=\"updateonhand\" action=\"scripts/update_onhand.php\" method=\"POST\" autocomplete=\"off\">";
+            echo "<input type=\"hidden\" name=\"drugidonhand\" value=\"".$drugid."\" />";
+            echo "<table name=\"onhandtable\" id=\"onhandtable\">";
+            echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
+            echo "<tr><td>New On Hand Amount:</td><td><input type=\"text\" name=\"onhand\" autocomplete=\"off\" /></td></tr>";
+            echo "<tr><td>Pasword:</td><td><input type=\"password\" name=\"empidonhand\" autocomplete=\"off\" /></td></tr>";
+            echo "</table>";
+            echo "<input type=\"submit\" name=\"gobabygo\" value=\"Update On Hand Amount\" />";
+            echo "</form>";
         }
     }elseif($actionid=="edit"){
         
