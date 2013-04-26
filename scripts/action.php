@@ -45,11 +45,12 @@
             }
         }
     }elseif($actionid=="edit"){
-        //show edit form for specific drug
+        
+//show edit form for specific drug
         echo "<h2>Drug Properties</h2>";
         $drugedit=$db->query("SELECT BrandName, GenericName, Strength, IsBrand, FormID, Comments, Active FROM ".$drugtable." WHERE ID=".$drugid.";");
         while($editr=$drugedit->fetch_object()){
-            echo "<form name=\"editdrug\" id=\"editdrug\" action=\"commit_edit_drug.php\" method=\"POST\" autocomplete=\"off\">";
+            echo "<form name=\"editdrug\" id=\"editdrug\" action=\"scripts/commit_edit_drug.php\" method=\"POST\" autocomplete=\"off\">";
             echo "<table name=\"editdrugtable\" id=\"newdrugtable\">";
             echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
             echo "<tr><td>Drug ID:</td><td><input type=\"text\" name=\"drugid\" value=\"".$drugid."\" readonly /></td></tr>";
@@ -75,11 +76,12 @@
             echo "<tr><td>Comments:</td><td><textarea name=\"comments\" columns=\"30\" rows=\"5\">".$editr->Comments."</textarea></td></tr>";
             echo "<tr><td>Password:</td><td><input type=\"password\" name=\"empid\" autocomplete=\"off\" /></td></tr>";
             echo "</table>";
-            echo "<input type=\"submit\" name=\"gobaby\" value=\"Submit Drug Edit\" />";
+            echo "<input type=\"submit\" name=\"gobaby\" value=\"Submit Drug Edit\" /></form>";
+
             //drug edit done, start ndc delete
-            echo "<br /><hr><h2>Attached NDC's</h2>";
+            echo "<br /><hr><h2>Delete Attached NDC's</h2>";
             $ndcs=$db->query("SELECT ID, NDC From ".$ndctable." WHERE DrugID=".$drugid." AND Active=True;");
-            echo "<form name=\"editndc\" id=\"editndc\" action=\"delete_ndc.php\" method=\"POST\" autocomplete=\"off\">";
+            echo "<form name=\"editndc\" id=\"editndc\" action=\"scripts/delete_ndc.php\" method=\"POST\" autocomplete=\"off\">";
             echo "<table><colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
             echo "<tr><td>NDC's:</td><td><select name=\"ndcid\" id=\"ndcid\" size=\"5\">";
                 while($ndcr=$ndcs->fetch_object()){
@@ -88,18 +90,38 @@
                     echo "<option value=\"".$ndcr->ID."\" label=\"".$realNDC."\">".$realNDC."</option>";
                 }
             echo "</select></td></tr><tr><td>Password:</td><td><input type=\"password\" name=\"empidndc\" autocomplete=\"off\" /></td></tr></table>";
-            echo "<br /><input type=\"submit\" name=\"gobabygo\" value=\"Delete Selected NDC\" />";
+            echo "<br /><input type=\"submit\" name=\"gobabygo\" value=\"Delete Selected NDC\" /></form>";
+            
             //ndc delete done, start ndc add
             echo "<br /><hr><h2>Add NDC to Drug</h2>";
-            echo "<form name=\"addndc\" id=\"addndc\" action=\"commit_ndc.php\" method=\"POST\" autocomplete=\"off\">";
+            echo "<form name=\"addndc\" id=\"addndc\" action=\"scripts/commit_ndc.php\" method=\"POST\" autocomplete=\"off\">";
             echo "<input type=\"hidden\" name=\"ndcdrugid\" value=\"".$drugid."\" />";
             echo "<table name=\"ndctable\" id=\"ndctable\">";
             echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
             echo "<tr><td>New NDC:</td><td><input type=\"text\" name=\"newndc\" autocomplete=\"off\" /></td></tr>";
-            echo "<tr><td>Pasword:</td><td><input type=\"password\" name=\"empidndc\" autocomplete=\"off\" /></td></tr>";
+            echo "<tr><td>Pasword:</td><td><input type=\"password\" name=\"empidadd\" autocomplete=\"off\" /></td></tr>";
             echo "</table>";
             echo "<input type=\"submit\" name=\"gobabygo\" value=\"Add NDC\" />";
             echo "</form>";
+            
+            if($editr->Active==1){
+                //delete drug section!!
+                echo "<br /><hr><h2 style=\"color:#ff0000;\">Delete Drug</h2>";
+                echo "<form name=\"deletedrug\" id=\"deletedrug\" action=\"scripts/delete_drug.php\" method=\"POST\" autocomplete=\"off\">";
+                echo "<input type=\"hidden\" name=\"deletedrugid\" value=\"".$drugid."\" /><br />";
+                echo "Password: <input type=\"password\" name=\"empiddel\" autocomplete=\"off\" /><br />";
+                echo "<h3 style=\"color:#ff0000;\">Are you sure you want to do this?</h3>";
+                echo "<input type=\"submit\" name=\"ohnowhy\" value=\"Delete Drug\" />";
+                echo "</form>";
+            }else{
+                echo "<br /><hr><h2 style=\"color:#ff0000;\">Reactivate Drug</h2>";
+                echo "<form name=\"activedrug\" id=\"activedrug\" action=\"scripts/reactivate_drug.php\" method=\"POST\" autocomplete=\"off\">";
+                echo "<input type=\"hidden\" name=\"activedrugid\" value=\"".$drugid."\" /><br />";
+                echo "Password: <input type=\"password\" name=\"empidact\" autocomplete=\"off\" /><br />";
+                echo "<h3 style=\"color:#ff0000;\">Are you sure you want to do this?</h3>";
+                echo "<input type=\"submit\" name=\"ohnowhy\" value=\"Reactivate Drug\" />";
+                echo "</form>"; 
+            }
         }
     }else{
         echo "Somehow we still didn't match.";

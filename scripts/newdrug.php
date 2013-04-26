@@ -1,4 +1,4 @@
-<form name="newdrug" id="newdrug" action="commit_new_drug.php" method="POST" autocomplete="off">
+<form name="newdrug" id="newdrug" action="scripts/commit_new_drug.php" method="POST" autocomplete="off">
     <table name="newdrugtable" id="newdrugtable">
         <colgroup><col name="label" style="width:200px;"><col name="boxes" style="width:500px;"></colgroup>
         <tr><td>Brand Name:</td><td><input type="text" name="brand" autocomplete="off" /></td></tr>
