@@ -67,6 +67,7 @@
             <h2>Entry</h2>
             <a href="index.php" onclick="return changepage('newrx.php');">Dispense RX</a>
             <a href="index.php" onclick="return changepage('newinvoice.php');">Receive Order</a>
+            <a href="index.php" onclick="return changepage('reviewtrans.php');">Review Transactions</a>
             <h2>Reports</h2>
             <a href="index.php" onclick="return changepage('onhand.php');">Check On Hand</a>
             <a href="index.php" onclick="return changepage('inventory.php');">Quick Inventory</a>
