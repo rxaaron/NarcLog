@@ -46,7 +46,61 @@
         }
     }elseif($actionid=="edit"){
         //show edit form for specific drug
-        
+        echo "<h2>Drug Properties</h2>";
+        $drugedit=$db->query("SELECT BrandName, GenericName, Strength, IsBrand, FormID, Comments, Active FROM ".$drugtable." WHERE ID=".$drugid.";");
+        while($editr=$drugedit->fetch_object()){
+            echo "<form name=\"editdrug\" id=\"editdrug\" action=\"commit_edit_drug.php\" method=\"POST\" autocomplete=\"off\">";
+            echo "<table name=\"editdrugtable\" id=\"newdrugtable\">";
+            echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
+            echo "<tr><td>Drug ID:</td><td><input type=\"text\" name=\"drugid\" value=\"".$drugid."\" readonly /></td></tr>";
+            echo "<tr><td>Brand Name:</td><td><input type=\"text\" name=\"brand\" autocomplete=\"off\" value=\"".$editr->BrandName."\"/></td></tr>";
+            echo "<tr><td>Generic Name:</td><td><input type=\"text\" name=\"generic\" autocomplete=\"off\" value=\"".$editr->GenericName."\" /></td></tr>";
+            echo "<tr><td>Strength:</td><td><input type=\"text\" name=\"strength\" autocomplete=\"off\" value=\"".$editr->Strength."\" /></td></tr>";
+            if($editr->IsBrand==1){
+                echo "<tr><td>Is Brand?</td><td><input type=\"checkbox\" name=\"isbrand\"checked /></td></tr>";
+            }else{
+                echo "<tr><td>Is Brand?</td><td><input type=\"checkbox\" name=\"isbrand\" /></td></tr>";
+            }
+            echo "<tr><td>Form:</td><td><select name=\"formid\" id=\"formid\">";
+            //list drug forms, choose appropriate one selected.
+            $forms=$db->query("SELECT ID, Description FROM DrugForm WHERE Active=true ORDER BY Description;");
+            while($formsr=$forms->fetch_object()){
+                if($formsr->ID==$editr->FormID){
+                    echo "<option value=\"".$formsr->ID."\" label=\"".$formsr->Description."\" selected>".$formsr->Description."</option>";
+                }else{
+                    echo "<option value=\"".$formsr->ID."\" label=\"".$formsr->Description."\">".$formsr->Description."</option>";
+                }
+            }
+            echo "</select></td></tr>";
+            echo "<tr><td>Comments:</td><td><textarea name=\"comments\" columns=\"30\" rows=\"5\">".$editr->Comments."</textarea></td></tr>";
+            echo "<tr><td>Password:</td><td><input type=\"password\" name=\"empid\" autocomplete=\"off\" /></td></tr>";
+            echo "</table>";
+            echo "<input type=\"submit\" name=\"gobaby\" value=\"Submit Drug Edit\" />";
+            //drug edit done, start ndc delete
+            echo "<br /><hr><h2>Attached NDC's</h2>";
+            $ndcs=$db->query("SELECT ID, NDC From ".$ndctable." WHERE DrugID=".$drugid." AND Active=True;");
+            echo "<form name=\"editndc\" id=\"editndc\" action=\"delete_ndc.php\" method=\"POST\" autocomplete=\"off\">";
+            echo "<table><colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
+            echo "<tr><td>NDC's:</td><td><select name=\"ndcid\" id=\"ndcid\" size=\"5\">";
+                while($ndcr=$ndcs->fetch_object()){
+                    $prerealNDC=substr_replace($ndcr->NDC,"-",5,0);
+                    $realNDC=substr_replace($prerealNDC,"-",10,0);
+                    echo "<option value=\"".$ndcr->ID."\" label=\"".$realNDC."\">".$realNDC."</option>";
+                }
+            echo "</select></td></tr><tr><td>Password:</td><td><input type=\"password\" name=\"empidndc\" autocomplete=\"off\" /></td></tr></table>";
+            echo "<br /><input type=\"submit\" name=\"gobabygo\" value=\"Delete Selected NDC\" />";
+            //ndc delete done, start ndc add
+            echo "<br /><hr><h2>Add NDC to Drug</h2>";
+            echo "<form name=\"addndc\" id=\"addndc\" action=\"commit_ndc.php\" method=\"POST\" autocomplete=\"off\">";
+            echo "<input type=\"hidden\" name=\"ndcdrugid\" value=\"".$drugid."\" />";
+            echo "<table name=\"ndctable\" id=\"ndctable\">";
+            echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
+            echo "<tr><td>New NDC:</td><td><input type=\"text\" name=\"newndc\" autocomplete=\"off\" /></td></tr>";
+            echo "<tr><td>Pasword:</td><td><input type=\"password\" name=\"empidndc\" autocomplete=\"off\" /></td></tr>";
+            echo "</table>";
+            echo "<input type=\"submit\" name=\"gobabygo\" value=\"Add NDC\" />";
+            echo "</form>";
+        }
     }else{
         echo "Somehow we still didn't match.";
     }

@@ -18,6 +18,12 @@
                 return false;
             }
             function searchbox(inpt,actn) {
+                if(inpt===""){
+                    document.getElementById("search").style.height='50px';
+                    document.getElementById("entry").style.top='85px';
+                    document.getElementById("results").innerHTML="";
+                    return false;
+                }
                 document.getElementById("search").style.height='300px';
                 document.getElementById("entry").style.top='335px';
                 document.getElementById("entry").innerHTML="";
