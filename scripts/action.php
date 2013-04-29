@@ -31,7 +31,22 @@
         
     }elseif($actionid=="invoice"){
         //new invoice transaction
-        
+        include('drug_header.php');
+        echo "<br /><hr><br /><h3>Recieve Order</h3>";
+        echo "<form name=\"newinvoice\" id=\"newinvoice\" action=\"scripts/commit_invoice.php\" method=\"POST\" autocomplete=\"off\">";
+        echo "<input type=\"hidden\" name=\"oldonhand\" value=\"".$resultsdrug->OnHand."\" />";
+        echo "<input type=\"hidden\" name=\"drugidnewrx\" value=\"".$drugid."\" />";
+        echo "<table name=\"newinvoicetable\" id=\"newinvoicetable\">";
+        echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
+        echo "<tr><td>Receive Date:</td><td><input type=\"text\" name=\"dispensedate\" autocomplete=\"off\" value=\"".date("m/d/Y")."\" /></td></tr>";
+        echo "<tr><td>Invoice Number:</td><td><input type =\"text\" name=\"rxnumber\" autocomplete=\"off\" /></td></tr>";
+        echo "<tr><td>Quantity Received:</td><td><input type =\"text\" name=\"qtydispensed\" autocomplete=\"off\" /></td></tr>";
+        echo "<tr><td>Quantity Remaining:</td><td><input type =\"text\" name=\"qtyremaining\" autocomplete=\"off\" /></td></tr>";
+        echo "<tr><td>Password:</td><td><input type =\"password\" name=\"passwordnewrx\" autocomplete=\"off\" /></td></tr>";
+        echo "</table>";
+        echo "<input type=\"submit\" name=\"gobabygo\" value=\"Enter Transaction\" />";
+        echo "</form>";
+     
     }elseif($actionid=="onhand"){
         //verify onhand quickly
             include('drug_header.php');
@@ -48,6 +63,7 @@
             echo "<table name=\"onhandtable\" id=\"onhandtable\">";
             echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
             echo "<tr><td>New On Hand Amount:</td><td><input type=\"text\" name=\"onhand\" autocomplete=\"off\" /></td></tr>";
+            echo "<tr><td>Comments:</td><td><textarea name=\"comments\" columns=\"30\" rows=\"5\"></textarea></td></tr>";
             echo "<tr><td>Pasword:</td><td><input type=\"password\" name=\"empidonhand\" autocomplete=\"off\" /></td></tr>";
             echo "</table>";
             echo "<input type=\"submit\" name=\"gobabygo\" value=\"Update On Hand Amount\" />";

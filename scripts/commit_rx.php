@@ -76,7 +76,7 @@ if (!$db) {
     }else{
         //back count does not match!!!
         include('drug_header.php');
-        echo "<br /><hr><br /><h3 style=\"color:#ff0000;\">Quantities Do Not Match</h3><h1>Please verify NDC's match and back count is correct.<br />Expected quantity remaining was: ".($oldonhand-$qtydisp)."</h1>";
+        echo "<br /><hr><br /><h2 style=\"color:#ff0000;\">Quantities Do Not Match</h2><h3>Please verify NDC's match and back count is correct.<br />Expected quantity remaining was: ".($oldonhand-$qtydisp)."</h3>";
         echo "<form name=\"newrx\" id=\"newrx\" action=\"commit_rx.php\" method=\"POST\" autocomplete=\"off\">";
         echo "<input type=\"hidden\" name=\"oldonhand\" value=\"".$resultsdrug->OnHand."\" />";
         echo "<input type=\"hidden\" name=\"drugidnewrx\" value=\"".$drugid."\" />";

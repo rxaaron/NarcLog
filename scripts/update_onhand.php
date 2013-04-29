@@ -11,6 +11,7 @@ if (!$db) {
     $drugid = $_POST['drugidonhand'];
     $newonhand = $_POST['onhand'];
     $today = date("Ymd");
+    $comments=$_POST['comments'];
     
         //check permissions
     $perms=$db->query("SELECT B.ID, A.BackCount FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['empidonhand']."';");
@@ -21,7 +22,7 @@ if (!$db) {
     
     $update=$db->query("UPDATE ".$drugtable." SET OnHand = ".$newonhand." WHERE ID = ".$drugid.";");
     if ($update){
-        $insert=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID) VALUES (".$today.",".$today.",3,'ManualChange',".$drugaddperms->ID.",".$newonhand.",".$newonhand.",".$drugid.");");
+        $insert=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID, Comments) VALUES (".$today.",".$today.",3,'ManualChange',".$drugaddperms->ID.",".$newonhand.",".$newonhand.",".$drugid.",'".$comments."');");
         if($insert){
                     echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Quantity Updated!</h2></html>";
         }else{
