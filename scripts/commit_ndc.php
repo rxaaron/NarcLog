@@ -16,7 +16,7 @@ if (!$db) {
     }
     $insert=$db->query("INSERT INTO ".$ndctable." (DrugID, NDC) VALUES (".$_POST['ndcdrugid'].",'".$_POST['newndc']."');");
     if($insert){
-        echo "NDC added.";
+                echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>NDC Add Successful!</h2></html>";
     }
 }
 ?>

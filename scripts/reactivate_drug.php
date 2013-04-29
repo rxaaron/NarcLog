@@ -19,7 +19,7 @@ if (!$db) {
 $update=$db->query("UPDATE ".$tablename." SET Active=True WHERE ID=".$_POST['activedrugid'].";");
     
     if($update){
-        echo "Drug reactivate successful.";
+                echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Drug Reactivated!</h2></html>";
     }
 }
 ?>

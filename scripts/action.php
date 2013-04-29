@@ -14,6 +14,7 @@
         include('drug_header.php');
         echo "<br /><hr><br /><h3>Dispense New Presription</h3>";
         echo "<form name=\"newrx\" id=\"newrx\" action=\"scripts/commit_rx.php\" method=\"POST\" autocomplete=\"off\">";
+        echo "<input type=\"hidden\" name=\"oldonhand\" value=\"".$resultsdrug->OnHand."\" />";
         echo "<input type=\"hidden\" name=\"drugidnewrx\" value=\"".$drugid."\" />";
         echo "<table name=\"newrxtable\" id=\"newrxtable\">";
         echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";

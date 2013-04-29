@@ -49,7 +49,7 @@ if (!$db) {
     $update=$db->query("UPDATE ".$tablename." SET BrandName='".$brand."', GenericName='".$generic."', Strength='".$strength."', IsBrand=".$isbrand.", FormID=".$formID.", Comments='".$comments."' WHERE ID=".$drugid.";");
     
     if($update){
-        echo "Drug update successful.";
+        echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Update Successful!</h2></html>";
     }
 }
 ?>
