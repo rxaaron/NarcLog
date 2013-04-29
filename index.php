@@ -57,6 +57,15 @@
                 document.getElementById("entry").innerHTML=xmlhttp.responseText;
                 return false;
             }
+            function entrydetail(entryid){
+                var xmlhttp;
+                xmlhttp=new XMLHttpRequest();
+                xmlhttp.open("POST","scripts/transaction_detail.php",false);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send("transid="+entryid);
+                document.getElementById("transdetail").innerHTML=xmlhttp.responseText;
+                return false;                
+            }
          </script>
     </head>
     <body>

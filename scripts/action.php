@@ -3,6 +3,7 @@
     $store_prefix=$_COOKIE['store'];
     $drugtable=$store_prefix."_Drugs";
     $ndctable=$store_prefix."_DrugCode";
+    $transactiontable=$store_prefix."_Transactions";
     
     $drugid=$_POST['drugid'];
     $actionid=$_POST['source'];
@@ -28,7 +29,17 @@
         echo "</form>";
      
     }elseif($actionid=="transactions"){
-        
+        include('drug_header.php');
+        $transactionquery=$db->query("SELECT A.ID, A.DateEntered, A.TransactionDate, B.Description AS Transaction, A.Identifier, C.Initials AS Employee, A.Quantity, A.NewOnHand, D.OnHand AS CurrentOnHand, E.Exact, A.Comments FROM ".$transactiontable." AS A INNER JOIN TransactionType AS B ON A.TransactionType = B.ID INNER JOIN Employee AS C ON A.EmployeeID = C.ID INNER JOIN .".$drugtable." AS D ON A.DrugID = D.ID INNER JOIN DrugForm AS E ON D.FormID = E.ID WHERE A.DrugID=".$drugid.";");
+        if($transactionquery->num_rows>0){
+            echo "<br /><hr><br /><table><tr><th>&nbsp;</th><th>Entry Date</th><th>Transaction Date</th><th>Type</th><th>Rx/Invoice #</th><th>Employee</th><th>Quantity</th><th>Amt After Transaction</th><th>Current On-Hand</th><th>Comments</th></tr>";
+            while($trans=$transactionquery->fetch_object()){
+                echo "<tr><td><a href=\"#\" onclick=\"return entrydetail(".$trans->ID.");\">Edit</a></td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->DateEntered))."</td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->TransactionDate))."</td><td class=\"tacenter\">".$trans->Transaction."</td><td class=\"tacenter\">".$trans->Identifier."</td><td class=\"tacenter\">".$trans->Employee."</td><td class=\"tacenter\">".$trans->Quantity."</td><td class=\"tacenter\">".$trans->NewOnHand."</td><td class=\"tacenter\">".$trans->CurrentOnHand."</td><td>".$trans->Comments."</td></tr>";              
+            }
+            echo "</table><div id=\"transdetail\"></div>";
+        }else{
+            exit("<br /><br />There are no transactions for this drug.");
+        }
     }elseif($actionid=="invoice"){
         //new invoice transaction
         include('drug_header.php');
