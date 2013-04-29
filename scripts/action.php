@@ -11,6 +11,20 @@
     
     if($actionid=="rx"){
         //new rx transaction
+        include('drug_header.php');
+        echo "<br /><hr><br /><h3>Dispense New Presription</h3>";
+        echo "<form name=\"newrx\" id=\"newrx\" action=\"scripts/commit_rx.php\" method=\"POST\" autocomplete=\"off\">";
+        echo "<input type=\"hidden\" name=\"drugidnewrx\" value=\"".$drugid."\" />";
+        echo "<table name=\"newrxtable\" id=\"newrxtable\">";
+        echo "<colgroup><col name=\"label\" style=\"width:200px;\"><col name=\"boxes\" style=\"width:500px;\"></colgroup>";
+        echo "<tr><td>Dispense Date:</td><td><input type=\"text\" name=\"dispensedate\" autocomplete=\"off\" value=\"".date("m/d/Y")."\" /></td></tr>";
+        echo "<tr><td>Rx Number:</td><td><input type =\"text\" name=\"rxnumber\" autocomplete=\"off\" /></td></tr>";
+        echo "<tr><td>Quantity Dispensed:</td><td><input type =\"text\" name=\"qtydispensed\" autocomplete=\"off\" /></td></tr>";
+        echo "<tr><td>Quantity Remaining:</td><td><input type =\"text\" name=\"qtyremaining\" autocomplete=\"off\" /></td></tr>";
+        echo "<tr><td>Password:</td><td><input type =\"password\" name=\"passwordnewrx\" autocomplete=\"off\" /></td></tr>";
+        echo "</table>";
+        echo "<input type=\"submit\" name=\"gobabygo\" value=\"Enter Transaction\" />";
+        echo "</form>";
      
     }elseif($actionid=="transactions"){
         
@@ -19,32 +33,14 @@
         
     }elseif($actionid=="onhand"){
         //verify onhand quickly
-        $drugonhand=$db->query("SELECT A.BrandName AS Drug, A.Strength, A.OnHand, B.Description AS Form, B.Exact FROM ".$drugtable." AS A INNER JOIN DrugForm AS B ON A.FormID = B.ID WHERE (A.IsBrand=True AND A.Active=True AND A.ID=".$drugid.") UNION SELECT A.GenericName AS Drug, A.Strength, A.OnHand, B.Description AS Form, B.Exact FROM ".$drugtable." AS A INNER JOIN DrugForm AS B on A.FormID = B.ID WHERE (A.IsBrand=False AND A.Active AND A.ID=".$drugid.") ORDER BY Drug, Strength;");
-        if($drugonhand){
-            while($resultsdrug=$drugonhand->fetch_object()){
-                echo "<div class=\"tacenter\"><h2>".$resultsdrug->Drug." ".$resultsdrug->Strength." ".$resultsdrug->Form."</h2>";
-                $ndc=$db->query("SELECT NDC FROM ".$ndctable." WHERE DrugID=".$drugid.";");
-                if($ndc){
-                    $no=1;
-                    echo "NDC(s):   ";
-                    while($resultsndc=$ndc->fetch_object()){
-                        $prerealNDC=substr_replace($resultsndc->NDC, "-", 5, 0);
-                        $realNDC=substr_replace($prerealNDC,"-",10,0);
-                        if($no==1){
-                            echo $realNDC;
-                            $no=2;
-                        }else{
-                            echo "  |  ".$realNDC;
-                        }
-                    }
-                }
+            include('drug_header.php');
                 if($resultsdrug->Exact==1){
                     $onhandamount=$resultsdrug->OnHand;
                 }else{
                     $onhandamount=  number_format($resultsdrug->OnHand);
                 }
-            echo "<h2>Quantity On Hand:  ".$onhandamount."</h2></div>";
-            }
+            echo "<div class=\"tacenter\"><h2>Quantity On Hand:  ".$onhandamount."</h2></div>";
+            
             echo "<br /><hr><br /><h3>Manually update amount.</h3>";
             echo "<form name=\"updateonhand\" id=\"updateonhand\" action=\"scripts/update_onhand.php\" method=\"POST\" autocomplete=\"off\">";
             echo "<input type=\"hidden\" name=\"drugidonhand\" value=\"".$drugid."\" />";
@@ -55,10 +51,11 @@
             echo "</table>";
             echo "<input type=\"submit\" name=\"gobabygo\" value=\"Update On Hand Amount\" />";
             echo "</form>";
-        }
+        
     }elseif($actionid=="edit"){
         
 //show edit form for specific drug
+        include('drug_header.php');
         echo "<h2>Drug Properties</h2>";
         $drugedit=$db->query("SELECT BrandName, GenericName, Strength, IsBrand, FormID, Comments, Active FROM ".$drugtable." WHERE ID=".$drugid.";");
         while($editr=$drugedit->fetch_object()){

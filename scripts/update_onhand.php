@@ -21,7 +21,7 @@ if (!$db) {
     
     $update=$db->query("UPDATE ".$drugtable." SET OnHand = ".$newonhand." WHERE ID = ".$drugid.";");
     if ($update){
-        $insert=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, DrugID) VALUES (".$today.",".$today.",3,'ManualChange',".$drugaddperms->ID.",".$newonhand.",".$drugid.");");
+        $insert=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID) VALUES (".$today.",".$today.",3,'ManualChange',".$drugaddperms->ID.",".$newonhand.",".$newonhand.",".$drugid.");");
         if($insert){
             echo "Quantity changed.";
         }else{
