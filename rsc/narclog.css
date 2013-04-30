@@ -134,3 +134,6 @@ tr.odd
 
 .voided
 {text-decoration:line-through;}
+
+.hideme
+{display:none;}

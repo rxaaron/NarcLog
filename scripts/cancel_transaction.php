@@ -26,7 +26,7 @@ if (!$db) {
         $cmts="Invoice ".$_POST['identifier']." voided by ".$drugaddperms->Initials;
     }
     
-    $update=$db->query("UPDATE ".$transactiontable." SET Active=False, Comments='Voided by ".$drugaddperms->AMT."' WHERE ID=".$_POST['transid'].";");
+    $update=$db->query("UPDATE ".$transactiontable." SET Active=False, Comments='Voided by ".$drugaddperms->Initials."' WHERE ID=".$_POST['transid'].";");
     
     if($update){
         $insert=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID, Comments) VALUES (".date("Ymd").",".date("Ymd").",".$newtrans.",'Correction',".$drugaddperms->ID.",".$_POST['quantity'].",".$_POST['newonhand'].",".$_POST['drugid'].",'".$cmts."');");
