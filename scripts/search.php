@@ -17,8 +17,9 @@
             if ($query){
                 if($query->num_rows!=0){
                     echo "<table><colgroup><col class=\"drugname\"><col class=\"drugstrength\"><col class=\"drugform\"><col class=\"drugcomments\"></colgroup><tr><th>Drug Name</th><th>Strength</th><th>Form</th><th>Comments</th></tr>";
+                    $c=true;
                     while($results=$query->fetch_object()){
-                        echo "<tr><td><a href=\"#\" onclick=\"return resultlist('".$results->ID."','".$action."')\">".$results->Drug." ".$results->Indicator."</a></td><td class=\"tacenter\">".$results->Strength."</td><td class=\"tacenter\">".$results->Form."</td><td>".$results->Comments."</td></tr>";
+                        echo "<tr ".(($c=!$c)?'class="even"':'class="odd"')."><td><a href=\"#\" onclick=\"return resultlist('".$results->ID."','".$action."')\">".$results->Drug." ".$results->Indicator."</a></td><td class=\"tacenter\">".$results->Strength."</td><td class=\"tacenter\">".$results->Form."</td><td>".$results->Comments."</td></tr>";
                     }
                     echo "</table>";
                 }else{

@@ -41,17 +41,19 @@ if (!$db) {
     }else{
         exit("Please enter a quantity remaining.");
     }
+    $middleonhand = $oldonhand+$qtydisp;
+    $rphchange = $qtyrem-$middleonhand;
     
-        if(isset($_POST['supervisor'])){
+        if(isset($_POST['override'])){
         $supperms=$db->query("SELECT B.ID, A.RPh FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['supervisor']."';");
         $supres=$supperms->fetch_object();
         if ($supres->RPh!=1){
             exit("Supervisor password is not correct.");
         }else{
             $superid=$supres->ID;
-            $newtrans=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID) VALUES (".date("Ymd").",".$dispense.",2,'".$rxnumber."',".$empid.",".$qtydisp.",".$qtyrem.",".$drugid.");");
+            $newtrans=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID) VALUES (".date("Ymd").",".$dispense.",2,'".$rxnumber."',".$empid.",".$qtydisp.",".$middleonhand.",".$drugid.");");
             if($newtrans){
-                $retrans=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID,Comments ) VALUES (".date("Ymd").",".$dispense.",3,'".$rxnumber."',".$superid.",".$qtydisp.",".$qtyrem.",".$drugid.",'".$_POST['comments']."');"); 
+                $retrans=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID,Comments ) VALUES (".date("Ymd").",".$dispense.",3,'".$rxnumber."',".$superid.",".$rphchange.",".$qtyrem.",".$drugid.",'".$_POST['comments']."');"); 
                 if(!$retrans){
                     echo "Why did that break?!?!?";
                 }
@@ -88,6 +90,7 @@ if (!$db) {
         echo "<tr><td>Quantity Received:</td><td><input type =\"text\" name=\"qtydispensed\" autocomplete=\"off\" value=\"".$qtydisp."\" /></td></tr>";
         echo "<tr><td>Quantity Remaining:</td><td><input type =\"text\" name=\"qtyremaining\" autocomplete=\"off\" value=\"".$qtyrem."\" /></td></tr>";
         echo "<tr><td>Password:</td><td><input type =\"password\" name=\"passwordnewrx\" autocomplete=\"off\" /></td></tr>";
+        echo "<tr><td>Override?:</td><td><input type=\"checkbox\" name=\"override\" /></td></tr>";
         echo "<tr><td>Supervisor Password:</td><td><input type =\"password\" name=\"supervisor\" autocomplete=\"off\" /></td></tr>";
         echo "<tr><td>Supervisor Comments:</td><td><textarea name=\"comments\" columns=\"30\" rows=\"5\"></textarea></td></tr>";
         echo "</table>";

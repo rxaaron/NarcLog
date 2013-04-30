@@ -57,12 +57,12 @@
                 document.getElementById("entry").innerHTML=xmlhttp.responseText;
                 return false;
             }
-            function entrydetail(entryid){
+            function entrydetail(entryid,actionid,quantity,drugid,identifier,active){
                 var xmlhttp;
                 xmlhttp=new XMLHttpRequest();
                 xmlhttp.open("POST","scripts/transaction_detail.php",false);
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-                xmlhttp.send("transid="+entryid);
+                xmlhttp.send("transid="+entryid+"&actionid="+actionid+"&quantity="+quantity+"&drugid="+drugid+"&identifier="+identifier+"&active="+active);
                 document.getElementById("transdetail").innerHTML=xmlhttp.responseText;
                 return false;                
             }

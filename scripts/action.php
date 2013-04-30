@@ -30,13 +30,48 @@
      
     }elseif($actionid=="transactions"){
         include('drug_header.php');
-        $transactionquery=$db->query("SELECT A.ID, A.DateEntered, A.TransactionDate, B.Description AS Transaction, A.Identifier, C.Initials AS Employee, A.Quantity, A.NewOnHand, D.OnHand AS CurrentOnHand, E.Exact, A.Comments FROM ".$transactiontable." AS A INNER JOIN TransactionType AS B ON A.TransactionType = B.ID INNER JOIN Employee AS C ON A.EmployeeID = C.ID INNER JOIN .".$drugtable." AS D ON A.DrugID = D.ID INNER JOIN DrugForm AS E ON D.FormID = E.ID WHERE A.DrugID=".$drugid.";");
+                        if($resultsdrug->Exact==1){
+                    $onhandamount=$resultsdrug->OnHand;
+                }else{
+                    $onhandamount=  number_format($resultsdrug->OnHand);
+                }
+            echo "<div class=\"tacenter\"><h2>Quantity On Hand:  ".$onhandamount."</h2></div>";
+        $transactionquery=$db->query("SELECT A.ID, A.DateEntered, A.TransactionDate, B.ID AS Transtype, B.Action, B.Description AS Transaction, A.Identifier, C.Initials AS Employee, A.Quantity, A.NewOnHand, D.ID AS DrugID, E.Exact, A.Comments, A.Active AS NotVoid FROM ".$transactiontable." AS A INNER JOIN TransactionType AS B ON A.TransactionType = B.ID INNER JOIN Employee AS C ON A.EmployeeID = C.ID INNER JOIN .".$drugtable." AS D ON A.DrugID = D.ID INNER JOIN DrugForm AS E ON D.FormID = E.ID WHERE A.DrugID=".$drugid." ORDER BY A.TransactionDate DESC, A.ID DESC;");
         if($transactionquery->num_rows>0){
-            echo "<br /><hr><br /><table><tr><th>&nbsp;</th><th>Entry Date</th><th>Transaction Date</th><th>Type</th><th>Rx/Invoice #</th><th>Employee</th><th>Quantity</th><th>Amt After Transaction</th><th>Current On-Hand</th><th>Comments</th></tr>";
+            echo "<br /><hr><br /><table><colgroup> <col name=\"edit\" style=\"width:50px;\"><col name=\"dateent\" style=\"width:100px;\"><col name=\"datetrans\" style=\"width:120px;\"><col name=\"ttype\" style=\"width:120px;\"><col name=\"ident\" style=\"width:105px;\"><col name=\"emp\" style=\"width:75px;\"><col name=\"quant\" style=\"width:70px\"><col name=\"newon\" style=\"width:160px;\"><col name=\"comments\"></colgroup><tr><th>&nbsp;</th><th class=\"tacenter\">Entry Date</th><th class=\"tacenter\">Transaction Date</th><th class=\"tacenter\">Type</th><th class=\"tacenter\">Rx/Invoice #</th><th class=\"tacenter\">Employee</th><th class=\"tacenter\">Quantity</th><th class=\"tacenter\">Amt After Transaction</th><th>Comments</th></tr>";
+            $c=true;
             while($trans=$transactionquery->fetch_object()){
-                echo "<tr><td><a href=\"#\" onclick=\"return entrydetail(".$trans->ID.");\">Edit</a></td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->DateEntered))."</td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->TransactionDate))."</td><td class=\"tacenter\">".$trans->Transaction."</td><td class=\"tacenter\">".$trans->Identifier."</td><td class=\"tacenter\">".$trans->Employee."</td><td class=\"tacenter\">".$trans->Quantity."</td><td class=\"tacenter\">".$trans->NewOnHand."</td><td class=\"tacenter\">".$trans->CurrentOnHand."</td><td>".$trans->Comments."</td></tr>";              
+                
+                if($trans->Action==2){
+                    $transclass=" drugreceive";
+                }elseif($trans->Action==3){
+                    $transclass=" rphoverride";
+                }else{
+                    $transclass="";
+                }
+                
+                if($trans->Exact==1){
+                    $quant=$trans->Quantity;
+                    $noh=$trans->NewOnHand;
+                }else{
+                    $quant=number_format($trans->Quantity);
+                    $noh=number_format($trans->NewOnHand);
+                }
+                
+                if($trans->NotVoid==0){
+                    $void=" voided";
+                    $cancel="";
+                }elseif($trans->Transtype==3 OR $trans->Transtype==5 or $trans->Transtype==4 or $trans->Transtype==6){
+                    $void="";
+                    $cancel="";
+                }else{
+                    $void="";
+                    $cancel="<a href=\"#\" onclick=\"return entrydetail(".$trans->ID.",".$trans->Action.",".$quant.",".$trans->DrugID.",".$trans->Identifier.",".$trans->NotVoid.");\">Cancel</a>";
+                }
+                
+                echo "<tr ".(($c=!$c)?'class="even':'class="odd').$void."\"><td>".$cancel."</td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->DateEntered))."</td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->TransactionDate))."</td><td class=\"tacenter".$transclass."\">".$trans->Transaction."</td><td class=\"tacenter\">".$trans->Identifier."</td><td class=\"tacenter\">".$trans->Employee."</td><td class=\"tacenter".$transclass."\">".$quant."</td><td class=\"tacenter\">".$noh."</td><td>".$trans->Comments."</td></tr>";              
             }
-            echo "</table><div id=\"transdetail\"></div>";
+            echo "</table><hr><div id=\"transdetail\"></div>";
         }else{
             exit("<br /><br />There are no transactions for this drug.");
         }

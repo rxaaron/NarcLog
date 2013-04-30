@@ -54,10 +54,10 @@ body
 #content td
 {padding:3px;}
 
-#content tr.odd
+tr.even
 {background-color:#f2f2f2;}
 
-#content tr.even
+tr.odd
 {background-color:#ffffff;}
 
 #content col.listamount
@@ -84,10 +84,10 @@ body
 #content col.drugform
 {width:100px;}
 
-#content td.taright
+#content .taright
 {text-align:right;}
 
-#content td.tacenter
+#content .tacenter
 {text-align:center;}
 
 #content input.entry
@@ -122,3 +122,15 @@ body
 
 #timediv
 {display:none;}
+
+#transdetail
+{padding:5px; margin:5px;}
+
+.drugreceive
+{color:#04b404;}
+
+.rphoverride
+{color:#ff0000;}
+
+.voided
+{text-decoration:line-through;}
