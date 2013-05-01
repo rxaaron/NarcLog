@@ -114,7 +114,7 @@
             echo "</table>";
             echo "<input type=\"submit\" name=\"gobabygo\" value=\"Update On Hand Amount\" />";
             echo "</form>";
-        
+
     }elseif($actionid=="edit"){
         
 //show edit form for specific drug
