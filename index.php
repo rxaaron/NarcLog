@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -94,6 +93,7 @@
             <a href="index.php" onclick="return changepage('drugadmin.php');">Drugs</a>
             <a href="index.php" onclick="return changepage('useradmin.php');">Users</a>
             <a href="index.php" onclick="return changepage('systemadmin.php');">System</a>
+            <a href="index.php" onclick="return changepage('changestore.php');">Change Store</a>
         </div>
         <div id="main">
             <?php 
@@ -104,8 +104,5 @@
                     }
                 ?>
         </div>            
-        <div id="sidebar">
-            <p><a href="index.php" onclick="return changepage('changestore.php');">Change Store</a></p>
-    </div>
     </body>
 </html>

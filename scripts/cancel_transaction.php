@@ -12,7 +12,7 @@ if (!$db) {
 } else {
     //check permissions
 
-    $perms=$db->query("SELECT B.ID, B.Initials, A.EditTransaction FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['userid']."';");
+    $perms=$db->query("SELECT B.ID, B.Initials, A.EditTransaction FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['userid']."' AND A.Active=TRUE;");
     $drugaddperms = $perms->fetch_object();
     if($drugaddperms->EditTransaction!=1){
         exit("You do not have permission to cancel transactions.");

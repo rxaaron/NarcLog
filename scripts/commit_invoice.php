@@ -12,7 +12,7 @@ if (!$db) {
 } else {
         //check permissions
 
-    $perms=$db->query("SELECT B.ID, A.EnterInvoice FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['passwordnewrx']."';");
+    $perms=$db->query("SELECT B.ID, A.EnterInvoice FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['passwordnewrx']."' AND A.Active=TRUE;");
     $drugaddperms = $perms->fetch_object();
     if($drugaddperms->EnterInvoice!=1){
         exit("You do not have permission to add a new drug.");

@@ -14,7 +14,7 @@ if (!$db) {
     $comments=$_POST['comments'];
     
         //check permissions
-    $perms=$db->query("SELECT B.ID, A.BackCount FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['empidonhand']."';");
+    $perms=$db->query("SELECT B.ID, A.BackCount FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['empidonhand']."' AND A.Active=TRUE;");
     $drugaddperms = $perms->fetch_object();
     if($drugaddperms->BackCount!=1){
         exit("You do not have permission to manually change an on hand amount.");

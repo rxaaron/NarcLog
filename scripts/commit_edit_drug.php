@@ -10,7 +10,7 @@ if (!$db) {
     echo 'ERROR: Could not connect to the database.';
 } else {
                 //check permissions
-    $perms=$db->query("SELECT A.DrugEdit FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['empid']."';");
+    $perms=$db->query("SELECT A.DrugEdit FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['empid']."' AND A.Active=TRUE;");
     $drugaddperms = $perms->fetch_object();
     if($drugaddperms->DrugEdit!=1){
         exit("You do not have permission to edit a drug.");
