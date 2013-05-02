@@ -23,7 +23,8 @@ if (!$db) {
     $oldonhand=$_POST['oldonhand'];
     
     if(isset($_POST['dispensedate'])){
-        $dispense=date("Ymd",strtotime($_POST['dispensedate']));         }else{
+        $dispense=date("Ymd",strtotime($_POST['dispensedate']));         
+    }else{
         exit("Please enter a Dispensing Date.");
     }
     if(isset($_POST['rxnumber'])){

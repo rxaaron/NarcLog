@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="rsc/narclog.css" type="text/css" media="screen"/>
         <link rel="stylesheet" href="rsc/print.css" type="text/css" media="print" />
         <link rel="shortcut icon" href="rsc/favicon.ico" />
+        <script src="rsc/prefixfree.min.js" type="text/javascript"></script>
         <script>
             function changepage(pagename){
                 var xmlhttp;
@@ -23,8 +24,6 @@
                     document.getElementById("results").innerHTML="";
                     return false;
                 }
-                document.getElementById("search").style.height='300px';
-                document.getElementById("entry").style.top='335px';
                 document.getElementById("entry").innerHTML="";
                 var xmlhttp;
                 xmlhttp=new XMLHttpRequest();
@@ -32,6 +31,8 @@
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xmlhttp.send("queryString="+inpt+"&action="+actn);
                 document.getElementById("results").innerHTML=xmlhttp.responseText;
+                document.getElementById("search").style.height='330px';
+                document.getElementById("entry").style.top='335px';
                 return false;
             }
             function resultlist(drugid,source) {

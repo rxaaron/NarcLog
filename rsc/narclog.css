@@ -10,13 +10,23 @@ body
 
 /**Top of the page stuff**/
 #banner
-{width:260px; height:100px; top:10px; left:5px; position:fixed;}
+{width:260px; height:100px; top:10px; left:5px; position:fixed; animation:bigentrance 5s ease-out forwards;}
+
+@keyframes bigentrance{
+    from{transform:translateX(-150px) translateY(-50px) scale(0) rotate(0deg);}
+    to{transform:translateX(0px) translateY(0px) scale(1) rotate(360deg);}
+}
 
 #banner a img
 {outline:none; border:none;}
 
 #title
-{position:fixed; top:5px; height:45px; left:0px; width:100%; text-align:center;}
+{position:fixed; top:5px; height:45px; left:0px; width:100%; text-align:center; animation:fadeinslow 1s ease forwards;}
+
+@keyframes fadeinslow{
+    from{opacity:0;}
+    to{opacity:1;}
+}
 
 /**Menu Bar**/
 #menu
@@ -29,7 +39,12 @@ body
 {display:block; text-align:right; margin-left:50px; margin-top:10px; padding:5px 18px 5px 20px; color:#606060; background:#eeeeee; font-size:1.5em; font-weight:normal; text-decoration:none; border-top-left-radius:12px; border-bottom-left-radius:12px;}
 
 #menu a:hover 
-{color:#303030; background:#ffffff;}
+{color:#303030; background:#ffffff; animation:pulse .5s linear alternate infinite;}
+
+@keyframes pulse{
+    from{background-color:#eeeeee; color:#0404b4;}
+    to{background-color:#ffffff; color:#b40404;}
+}
 
 #menu h2
 {display:block; text-align:left; margin-top:20px; margin-bottom:10px; margin-right:25px; padding:5px 18px 5px 20px; color:#b40404; background:#eeeeee; font-size:1.8em; font-weight:bold; text-decoration:none; border-top-right-radius:12px; border-bottom-right-radius:12px; border-bottom:3px solid #0404b4; border-top:1px solid #0404b4; border-right:2px solid #0404b4;}
@@ -106,7 +121,7 @@ tr.odd
 /**Searching Pages**/
 
 #search
-{position:absolute; display:block; left:5px; top:5px; right:5px; height:50px; border-top:1px solid #0404b4; border-left:1px solid #0404b4; border-right:2px solid #0404b4; border-bottom:3px solid #0404b4; border-radius:10px; padding:10px;}
+{position:absolute; display:block; left:5px; top:5px; right:5px; height:50px; border-top:1px solid #0404b4; border-left:1px solid #0404b4; border-right:2px solid #0404b4; border-bottom:3px solid #0404b4; border-radius:10px; padding:10px; transition:height 0.5s linear;}
 
 #results
 {position:absolute; display:block; padding:5px; left:0px; top:50px; right:0px; bottom:0px; overflow:auto;}
