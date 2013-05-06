@@ -93,7 +93,6 @@
             <h2>Administration</h2>
             <a href="index.php" onclick="return changepage('drugadmin.php');">Drugs</a>
             <a href="index.php" onclick="return changepage('useradmin.php');">Users</a>
-            <a href="index.php" onclick="return changepage('systemadmin.php');">System</a>
             <a href="index.php" onclick="return changepage('changestore.php');">Change Store</a>
         </div>
         <div id="main">

@@ -10,7 +10,7 @@ body
 
 /**Top of the page stuff**/
 #banner
-{width:260px; height:100px; top:10px; left:5px; position:fixed; animation:bigentrance 5s ease-out forwards;}
+{width:260px; height:100px; top:10px; left:5px; position:fixed; animation:bigentrance 1.5s ease-out forwards;}
 
 @keyframes bigentrance{
     from{transform:translateX(-150px) translateY(-50px) scale(0) rotate(0deg);}
@@ -30,7 +30,12 @@ body
 
 /**Menu Bar**/
 #menu
-{position:fixed; top:120px; left:0px; bottom:0px; width:260px; overflow-y:auto; overflow-x:hidden; background:#e0e0e0; border-right:2px solid #c0c0c0; border-top:2px solid #c0c0c0; text-align:right; border-top-right-radius:15px;}
+{position:fixed; top:120px; left:0px; bottom:0px; width:260px; overflow-y:auto; overflow-x:hidden; background:#e0e0e0; border-right:2px solid #c0c0c0; border-top:2px solid #c0c0c0; text-align:right; border-top-right-radius:15px; animation:slideup 1.5s ease-out forwards;}
+
+@keyframes slideup{
+    from{transform:translateY(1000px);}
+    to{transform:translateY(0px);}
+}
 
 #menu p
 {margin:10px;}
@@ -47,7 +52,12 @@ body
 }
 
 #menu h2
-{display:block; text-align:left; margin-top:20px; margin-bottom:10px; margin-right:25px; padding:5px 18px 5px 20px; color:#b40404; background:#eeeeee; font-size:1.8em; font-weight:bold; text-decoration:none; border-top-right-radius:12px; border-bottom-right-radius:12px; border-bottom:3px solid #0404b4; border-top:1px solid #0404b4; border-right:2px solid #0404b4;}
+{display:block; text-align:left; margin-top:20px; margin-bottom:10px; margin-right:25px; padding:5px 18px 5px 20px; color:#b40404; background:#eeeeee; font-size:1.8em; font-weight:bold; text-decoration:none; border-top-right-radius:12px; border-bottom-right-radius:12px; border-bottom:3px solid #0404b4; border-top:1px solid #0404b4; border-right:2px solid #0404b4; transform:translateX(-260px); animation: slidetotheside 1.5s ease-out forwards;}
+
+@keyframes slidetotheside{
+    from{transform:translateX(-260px);}
+    to{transform:translateX(0px);}
+}
 
 /**Main Area**/
 #main
@@ -121,7 +131,7 @@ tr.odd
 /**Searching Pages**/
 
 #search
-{position:absolute; display:block; left:5px; top:5px; right:5px; height:50px; border-top:1px solid #0404b4; border-left:1px solid #0404b4; border-right:2px solid #0404b4; border-bottom:3px solid #0404b4; border-radius:10px; padding:10px; transition:height 0.5s linear;}
+{position:absolute; display:block; left:5px; top:5px; right:5px; height:50px; border-top:1px solid #0404b4; border-left:1px solid #0404b4; border-right:2px solid #0404b4; border-bottom:3px solid #0404b4; border-radius:10px; padding:10px; transition:height 0.4s ease-out;}
 
 #results
 {position:absolute; display:block; padding:5px; left:0px; top:50px; right:0px; bottom:0px; overflow:auto;}
@@ -130,7 +140,7 @@ tr.odd
 {position:absolute; display:block; left:5px; top:5px; right:5px; height:300px; border-top:1px solid #0404b4; border-left:1px solid #0404b4; border-right:2px solid #0404b4; border-bottom:3px solid #0404b4; border-radius:10px; padding:10px;}
 
 #entry
-{position:absolute; display:block; margin:5px; top:85px; left:5px; right:5px; padding:10px; overflow:auto;}
+{position:absolute; display:block; margin:5px; top:85px; left:5px; right:5px; padding:10px; overflow:auto; transition:top 0.5s ease-out;}
 
 #userdiv
 {position:absolute; display:block; left:5px; top:335px; right:5px; bottom:5px; margin:5px; padding:10px; overflow:auto;}
