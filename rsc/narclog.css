@@ -41,7 +41,7 @@ body
 {margin:10px;}
 
 #menu a
-{display:block; text-align:right; margin-left:50px; margin-top:10px; padding:5px 18px 5px 20px; color:#606060; background:#eeeeee; font-size:1.5em; font-weight:normal; text-decoration:none; border-top-left-radius:12px; border-bottom-left-radius:12px; animation:lightSpeedin 1.5s ease-out forwards;}
+{display:block; text-align:right; margin-left:50px; margin-top:10px; padding:5px 18px 5px 20px; color:#606060; background:#eeeeee; font-size:1.5em; font-weight:normal; text-decoration:none; border-top-left-radius:12px; border-bottom-left-radius:12px;}
 
 @keyframes lightSpeedin{
    	0% { transform: translateX(100%) skewX(-30deg); opacity: 0; }
