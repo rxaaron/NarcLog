@@ -54,8 +54,8 @@ body
 {color:#303030; background:#ffffff; animation:pulse .5s linear alternate infinite;}
 
 @keyframes pulse{
-    from{background-color:#eeeeee; color:#0404b4;}
-    to{background-color:#ffffff; color:#b40404;}
+    from{background-color:#eeeeee; color:#0404b4; transform:scale(1);}
+    to{background-color:#ffffff; color:#b40404; transform:scale(1.05);}
 }
 
 #menu h2
