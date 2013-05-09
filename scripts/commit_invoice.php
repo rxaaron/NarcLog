@@ -60,7 +60,7 @@ if (!$db) {
             }
             $updatedrug=$db->query("UPDATE ".$drugtable." SET OnHand=".$qtyrem." WHERE ID=".$drugid.";");
             if($updatedrug){
-                        exit("<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Invoice Entry Successful!</h2></html>");
+                        exit("<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=newinvoice\" /></head><h2>Invoice Entry Successful!</h2></html>");
             }
         }
     }
@@ -72,7 +72,7 @@ if (!$db) {
 
             $updatedrug=$db->query("UPDATE ".$drugtable." SET OnHand=".$qtyrem." WHERE ID=".$drugid.";");
             if($updatedrug){
-                        echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Invoice Entry Successful!</h2></html>";
+                        echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=newinvoice\" /></head><h2>Invoice Entry Successful!</h2></html>";
             }
         }
     }else{

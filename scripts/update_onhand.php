@@ -24,7 +24,7 @@ if (!$db) {
     if ($update){
         $insert=$db->query("INSERT INTO ".$transactiontable." (DateEntered, TransactionDate, TransactionType, Identifier, EmployeeID, Quantity, NewOnHand, DrugID, Comments) VALUES (".$today.",".$today.",3,'ManualChange',".$drugaddperms->ID.",".$newonhand.",".$newonhand.",".$drugid.",'".$comments."');");
         if($insert){
-                    echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Quantity Updated!</h2></html>";
+                    echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=onhand\" /></head><h2>Quantity Updated!</h2></html>";
         }else{
             echo "Something bad happened. Cry for less help than before.";
         }

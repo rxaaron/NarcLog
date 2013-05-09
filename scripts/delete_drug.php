@@ -19,7 +19,7 @@ if (!$db) {
 $update=$db->query("UPDATE ".$tablename." SET Active=False WHERE ID=".$_POST['deletedrugid'].";");
     
     if($update){
-                echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Drug Delete Successful!</h2></html>";
+                echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=drugadmin\" /></head><h2>Drug Delete Successful!</h2></html>";
     }
 }
 ?>

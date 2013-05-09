@@ -49,6 +49,7 @@
                 return false;
             }
             function useredit(userid) {
+                document.getElementById("entry").innerHTML="";
                 var xmlhttp;
                 xmlhttp=new XMLHttpRequest();
                 xmlhttp.open("POST","scripts/useredit.php",false);
@@ -64,6 +65,7 @@
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xmlhttp.send();
                 document.getElementById("entry").innerHTML=xmlhttp.responseText;
+                document.getElementById("userdiv").innerHTML="";
                 return false;
             }
             function entrydetail(entryid,actionid,quantity,drugid,identifier,active){
@@ -93,12 +95,15 @@
             <h2>Administration</h2>
             <a href="index.php" onclick="return changepage('drugadmin.php');">Drugs</a>
             <a href="index.php" onclick="return changepage('useradmin.php');">Users</a>
+            <a href="index.php" onclick="return changepage('changepassword.php');">Change Password</a>
             <a href="index.php" onclick="return changepage('changestore.php');">Change Store</a>
         </div>
         <div id="main">
             <?php 
                     if(!isset($_COOKIE['store'])){
                         include_once('changestore.php');
+                    }elseif(isset($_GET['page'])){
+                        include_once($_GET['page'].".php");
                     }else{
                         include_once('newrx.php');
                     }

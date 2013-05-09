@@ -19,4 +19,5 @@
     <div id="entry">
         &nbsp;
     </div>
+    <div id="userdiv" style="display:none;"></div>
 </div>

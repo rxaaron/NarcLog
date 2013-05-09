@@ -11,3 +11,4 @@
         <tr><td>Password:</td><td><input type="password" name="empid" autocomplete="off" /></td></tr>
     </table>
     <input type="submit" name="gobaby" value="Submit New Drug" />
+</form>

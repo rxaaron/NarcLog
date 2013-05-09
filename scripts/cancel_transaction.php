@@ -33,7 +33,7 @@ if (!$db) {
         if ($insert){
             $drugfix=$db->query("UPDATE ".$drugtable." SET OnHand=".$_POST['newonhand']." WHERE ID=".$_POST['drugid'].";");
             if($drugfix){
-            echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Transaction Cancelled!</h2></html>";
+            echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=reviewtrans\" /></head><h2>Transaction Cancelled!</h2></html>";
             }
         }
     }

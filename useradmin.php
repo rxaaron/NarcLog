@@ -9,4 +9,6 @@
     <div id="userdiv">
         &nbsp;
     </div>
+<div id="entry" style="top:335px;">
+</div>    
 </div>

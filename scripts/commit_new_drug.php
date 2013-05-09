@@ -53,7 +53,7 @@ if (!$db) {
     $insert=$db->query("INSERT INTO ".$tablename." (BrandName, GenericName, Strength, IsBrand, FormID, Comments, OnHand) VALUES ('".$brand."','".$generic."','".$strength."',".$isbrand.",".$formID.",'".$comments."',".$onhand.");");
     
     if($insert){
-        echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/\" /></head><h2>Drug Entry Successful!</h2></html>";
+        echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=drugadmin\" /></head><h2>Drug Entry Successful!</h2></html>";
     }
 }
 ?>
