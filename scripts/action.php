@@ -87,7 +87,7 @@
         echo "<tr><td>Receive Date:</td><td><input type=\"text\" name=\"dispensedate\" autocomplete=\"off\" value=\"".date("m/d/Y")."\" /></td></tr>";
         echo "<tr><td>Invoice Number:</td><td><input type =\"text\" name=\"rxnumber\" autocomplete=\"off\" /></td></tr>";
         echo "<tr><td>Quantity Received:</td><td><input type =\"text\" name=\"qtydispensed\" autocomplete=\"off\" /></td></tr>";
-        echo "<tr><td>Quantity Remaining:</td><td><input type =\"text\" name=\"qtyremaining\" autocomplete=\"off\" /></td></tr>";
+        echo "<tr><td>Total Quantity:</td><td><input type =\"text\" name=\"qtyremaining\" autocomplete=\"off\" /></td></tr>";
         echo "<tr><td>Password:</td><td><input type =\"password\" name=\"passwordnewrx\" autocomplete=\"off\" /></td></tr>";
         echo "</table>";
         echo "<input type=\"submit\" name=\"gobabygo\" value=\"Enter Transaction\" />";

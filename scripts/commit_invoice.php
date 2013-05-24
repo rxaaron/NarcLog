@@ -39,7 +39,7 @@ if (!$db) {
     if(isset($_POST['qtyremaining'])){
         $qtyrem=$_POST['qtyremaining'];
     }else{
-        exit("Please enter a quantity remaining.");
+        exit("Please enter a total quantity.");
     }
     $middleonhand = $oldonhand+$qtydisp;
     $rphchange = $qtyrem-$middleonhand;
@@ -88,7 +88,7 @@ if (!$db) {
         echo "<tr><td>Receive Date:</td><td><input type=\"text\" name=\"dispensedate\" autocomplete=\"off\" value=\"".$dispense."\" /></td></tr>";
         echo "<tr><td>Invoice Number:</td><td><input type =\"text\" name=\"rxnumber\" autocomplete=\"off\" value=\"".$rxnumber."\" /></td></tr>";
         echo "<tr><td>Quantity Received:</td><td><input type =\"text\" name=\"qtydispensed\" autocomplete=\"off\" value=\"".$qtydisp."\" /></td></tr>";
-        echo "<tr><td>Quantity Remaining:</td><td><input type =\"text\" name=\"qtyremaining\" autocomplete=\"off\" value=\"".$qtyrem."\" /></td></tr>";
+        echo "<tr><td>Total Quantity:</td><td><input type =\"text\" name=\"qtyremaining\" autocomplete=\"off\" value=\"".$qtyrem."\" /></td></tr>";
         echo "<tr><td>Password:</td><td><input type =\"password\" name=\"passwordnewrx\" autocomplete=\"off\" /></td></tr>";
         echo "<tr><td>Override?:</td><td><input type=\"checkbox\" name=\"override\" /></td></tr>";
         echo "<tr><td>Supervisor Password:</td><td><input type =\"password\" name=\"supervisor\" autocomplete=\"off\" /></td></tr>";

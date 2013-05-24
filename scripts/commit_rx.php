@@ -15,7 +15,7 @@ if (!$db) {
     $perms=$db->query("SELECT B.ID, A.EnterRx FROM ".$store_prefix."_Permissions AS A INNER JOIN Employee AS B ON A.EmployeeID=B.ID WHERE B.Password = '".$_POST['passwordnewrx']."' AND A.Active=TRUE;");
     $drugaddperms = $perms->fetch_object();
     if($drugaddperms->EnterRx!=1){
-        exit("You do not have permission to add a new drug.");
+        exit("You do not have permission to dispense an Rx.");
     }
     
     $drugid=$_POST['drugidnewrx'];
