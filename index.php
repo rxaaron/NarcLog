@@ -8,6 +8,9 @@
         <link rel="shortcut icon" href="rsc/favicon.ico" />
         <script src="rsc/prefixfree.min.js" type="text/javascript"></script>
         <script>
+            window.onload = function() {
+                document.getElementById("inputStringbox").focus();
+            };
             function changepage(pagename){
                 var xmlhttp;
                 xmlhttp=new XMLHttpRequest();
@@ -15,7 +18,7 @@
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xmlhttp.send();
                 document.getElementById("main").innerHTML=xmlhttp.responseText;
-                document.getElementById("inputStringBox").focus();
+                setTimeout(function(){document.getElementById("inputStringBox").focus();},500);
                 return false;
             }
             function searchbox(inpt,actn) {
