@@ -8,7 +8,7 @@
                 <colgroup><col id="label" style="width:20%;"><col id="box" style="width:70%"></colgroup>
                 <tr>
                     <td>Search by Name or NDC:</td>
-                    <td><input type="text" name="inputStringBox" id="inputStringBox" autocomplete="off" onkeyup="searchbox(this.value,'rx');" style="width:90%;" /></td>
+                    <td><input type="text" name="inputStringBox" id="inputStringBox" autocomplete="off" onkeyup="searchbox(this.value,'rx');" style="width:90%;" autofocus/></td>
                 </tr>            
             </table>
         </form>
