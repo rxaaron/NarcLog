@@ -138,7 +138,7 @@ tr.odd
 /**Searching Pages**/
 
 #search
-{position:absolute; display:block; left:5px; top:5px; right:5px; height:50px; border-top:1px solid #0404b4; border-left:1px solid #0404b4; border-right:2px solid #0404b4; border-bottom:3px solid #0404b4; border-radius:10px; padding:10px; transition:height 0.4s ease-out;}
+{position:absolute; display:block; left:5px; top:5px; right:5px; height:50px; border-top:1px solid #0404b4; border-left:1px solid #0404b4; border-right:2px solid #0404b4; border-bottom:3px solid #0404b4; border-radius:10px; padding:10px; transition:height 0.25s ease-out;}
 
 #results
 {position:absolute; display:block; padding:5px; left:0px; top:50px; right:0px; bottom:0px; overflow:auto;}

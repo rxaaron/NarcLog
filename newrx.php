@@ -2,7 +2,7 @@
     <h1><?php echo $_COOKIE['store']; ?> C-II Dispense RX</h1>
 </div>
 <div id="content">
-    <div id="search">
+    <div id="search" OnLoad="document.getElementById('inputStringBox').focus();">
         <form name="searchform" id="searchform" autocomplete="off">
             <table style="width:95%;">
                 <colgroup><col id="label" style="width:20%;"><col id="box" style="width:70%"></colgroup>

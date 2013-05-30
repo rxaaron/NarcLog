@@ -14,7 +14,8 @@
                 xmlhttp.open("POST",pagename,false);
                 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                 xmlhttp.send();
-                document.getElementById("main").innerHTML=xmlhttp.responseText;  
+                document.getElementById("main").innerHTML=xmlhttp.responseText;
+                document.getElementById("inputStringBox").focus();
                 return false;
             }
             function searchbox(inpt,actn) {
