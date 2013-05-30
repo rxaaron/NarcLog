@@ -8,7 +8,7 @@
                 <colgroup><col id="label" style="width:20%;"><col id="box" style="width:70%"></colgroup>
                 <tr>
                     <td>Search by Name or NDC:</td>
-                    <td><input type="text" name="inputStringBox" id="inputStringBox" autocomplete="off" onkeyup="searchbox(this.value,'invoice');" style="width:90%;" autofocus /></td>
+                    <td><input type="text" name="inputStringBox" id="inputStringBox" autocomplete="off" onkeyup="searchbox(this.value,'invoice');" style="width:90%;" autofocus placeholder="Enter Brand Name, Generic Name, or NDC" /></td>
                 </tr>            
             </table>
         </form>
