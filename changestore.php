@@ -5,6 +5,7 @@
         <option value="North" label="North">North</option>
         <option value="RCB" label="RCB">RCB</option>
         <option value="South" label="South">South</option>
+        <option value="Union" label="Union">Union</option>
         <option value="WSS" label="WSS">WSS</option>
     </select>
     <input type="submit" name="gobabygo" value="Change Store" />

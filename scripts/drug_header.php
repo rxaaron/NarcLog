@@ -3,7 +3,7 @@
         if($drugonhand){
             $resultsdrug=$drugonhand->fetch_object();
                 echo "<div class=\"tacenter\"><h2>".$resultsdrug->Drug." ".$resultsdrug->Strength." ".$resultsdrug->Form."</h2>";
-                $ndc=$db->query("SELECT NDC FROM ".$ndctable." WHERE DrugID=".$drugid.";");
+                $ndc=$db->query("SELECT NDC FROM ".$ndctable." WHERE DrugID=".$drugid." AND Active=TRUE;");
                 if($ndc){
                     $no=1;
                     echo "NDC(s):   ";
