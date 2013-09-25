@@ -21,7 +21,32 @@
                 setTimeout(function(){document.getElementById("inputStringBox").focus();},500);
                 return false;
             }
+            function formsub(actn){
+                event.cancelBubble = true;
+                event.returnValue = false;
+                var inpt = document.getElementById("inputStringBox").value;
+                                if(inpt===""){
+                    document.getElementById("search").style.height='50px';
+                    document.getElementById("entry").style.top='85px';
+                    document.getElementById("results").innerHTML="";
+                    return false;
+                }
+                document.getElementById("entry").innerHTML="";
+                var xmlhttp;
+                xmlhttp=new XMLHttpRequest();
+                xmlhttp.open("POST","scripts/search.php",false);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send("queryString="+inpt+"&action="+actn);
+                document.getElementById("results").innerHTML=xmlhttp.responseText;
+                document.getElementById("search").style.height='330px';
+                document.getElementById("entry").style.top='335px';
+                return false;
+            }
             function searchbox(inpt,actn) {
+                var slowness = document.getElementById("slowness").checked;
+                if(slowness===true){
+                    return false;
+                }
                 if(inpt===""){
                     document.getElementById("search").style.height='50px';
                     document.getElementById("entry").style.top='85px';
@@ -88,6 +113,8 @@
             <a href="http://gmapserver.grcs.local/"><img src="rsc/GMAP_Logo.png" alt="GMAP/Encore" width ="250" height="100"></a>
         </div>            
         <div id="menu">
+            <a>
+            <input type="checkbox" id="slowness" />Fast Search</a>
             <h2>Entry</h2>
             <a href="index.php" onclick="return changepage('newrx.php');">Dispense RX</a>
             <a href="index.php" onclick="return changepage('newinvoice.php');">Receive Order</a>

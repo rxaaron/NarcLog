@@ -3,7 +3,7 @@
 </div>
 <div id="content">
     <div id="search">
-        <form name="searchform" id="searchform" autocomplete="off">
+        <form name="searchform" id="searchform" autocomplete="off" action="" method="POST" onsubmit="formsub('invoice');">
             <table style="width:95%;">
                 <colgroup><col id="label" style="width:20%;"><col id="box" style="width:70%"></colgroup>
                 <tr>
