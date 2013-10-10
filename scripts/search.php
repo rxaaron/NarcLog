@@ -8,6 +8,7 @@
     include_once('dbconn.php');
     
     $queryString= $db->real_escape_string($_POST['queryString']);
+    $queryString= str_replace("-","",$queryString);
     
     if (!$db){
         echo "There was a database error!";
