@@ -66,7 +66,7 @@
                     $cancel="";
                 }else{
                     $void="";
-                    $cancel="<a href=\"#\" onclick=\"return entrydetail(".$trans->ID.",".$trans->Action.",".$quant.",".$trans->DrugID.",".$trans->Identifier.",".$trans->NotVoid.");\">Cancel</a>";
+                    $cancel="<a href=\"#\" onclick=\"return entrydetail(".$trans->ID.",".$trans->Action.",".$quant.",".$trans->DrugID.",'".$trans->Identifier."',".$trans->NotVoid.");\">Cancel</a>";
                 }
                 
                 echo "<tr ".(($c=!$c)?'class="even':'class="odd').$void."\"><td>".$cancel."</td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->DateEntered))."</td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->TransactionDate))."</td><td class=\"tacenter".$transclass."\">".$trans->Transaction."</td><td class=\"tacenter\">".$trans->Identifier."</td><td class=\"tacenter\">".$trans->Employee."</td><td class=\"tacenter".$transclass."\">".$quant."</td><td class=\"tacenter\">".$noh."</td><td>".$trans->Comments."</td></tr>";              
