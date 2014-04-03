@@ -43,10 +43,7 @@
                 return false;
             }
             function searchbox(inpt,actn) {
-                var slowness = document.getElementById("slowness").checked;
-                if(slowness===true){
-                    return false;
-                }
+
                 if(inpt===""){
                     document.getElementById("search").style.height='50px';
                     document.getElementById("entry").style.top='85px';

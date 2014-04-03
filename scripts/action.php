@@ -38,7 +38,7 @@
             echo "<div class=\"tacenter\"><h2>Quantity On Hand:  ".$onhandamount."</h2></div>";
         $transactionquery=$db->query("SELECT A.ID, A.DateEntered, A.TransactionDate, B.ID AS Transtype, B.Action, B.Description AS Transaction, A.Identifier, C.Initials AS Employee, A.Quantity, A.NewOnHand, D.ID AS DrugID, E.Exact, A.Comments, A.Active AS NotVoid FROM ".$transactiontable." AS A INNER JOIN TransactionType AS B ON A.TransactionType = B.ID INNER JOIN Employee AS C ON A.EmployeeID = C.ID INNER JOIN .".$drugtable." AS D ON A.DrugID = D.ID INNER JOIN DrugForm AS E ON D.FormID = E.ID WHERE A.DrugID=".$drugid." ORDER BY A.TransactionDate DESC, A.ID DESC;");
         if($transactionquery->num_rows>0){
-            echo "<br /><hr><br /><table><colgroup> <col name=\"edit\" style=\"width:50px;\"><col name=\"dateent\" style=\"width:100px;\"><col name=\"datetrans\" style=\"width:120px;\"><col name=\"ttype\" style=\"width:120px;\"><col name=\"ident\" style=\"width:105px;\"><col name=\"emp\" style=\"width:75px;\"><col name=\"quant\" style=\"width:70px\"><col name=\"newon\" style=\"width:160px;\"><col name=\"comments\"></colgroup><tr><th>&nbsp;</th><th class=\"tacenter\">Entry Date</th><th class=\"tacenter\">Transaction Date</th><th class=\"tacenter\">Type</th><th class=\"tacenter\">Rx/Invoice #</th><th class=\"tacenter\">Employee</th><th class=\"tacenter\">Quantity</th><th class=\"tacenter\">Amt After Transaction</th><th>Comments</th></tr>";
+            echo "<br /><hr><div id=\"transdetail\"></div><br /><table><colgroup> <col name=\"edit\" style=\"width:50px;\"><col name=\"dateent\" style=\"width:100px;\"><col name=\"datetrans\" style=\"width:120px;\"><col name=\"ttype\" style=\"width:120px;\"><col name=\"ident\" style=\"width:105px;\"><col name=\"emp\" style=\"width:75px;\"><col name=\"quant\" style=\"width:70px\"><col name=\"newon\" style=\"width:160px;\"><col name=\"comments\"></colgroup><tr><th>&nbsp;</th><th class=\"tacenter\">Entry Date</th><th class=\"tacenter\">Transaction Date</th><th class=\"tacenter\">Type</th><th class=\"tacenter\">Rx/Invoice #</th><th class=\"tacenter\">Employee</th><th class=\"tacenter\">Quantity</th><th class=\"tacenter\">Amt After Transaction</th><th>Comments</th></tr>";
             $c=true;
             while($trans=$transactionquery->fetch_object()){
                 
@@ -71,7 +71,7 @@
                 
                 echo "<tr ".(($c=!$c)?'class="even':'class="odd').$void."\"><td>".$cancel."</td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->DateEntered))."</td><td class=\"tacenter\">".date("m/d/Y",strtotime($trans->TransactionDate))."</td><td class=\"tacenter".$transclass."\">".$trans->Transaction."</td><td class=\"tacenter\">".$trans->Identifier."</td><td class=\"tacenter\">".$trans->Employee."</td><td class=\"tacenter".$transclass."\">".$quant."</td><td class=\"tacenter\">".$noh."</td><td>".$trans->Comments."</td></tr>";              
             }
-            echo "</table><hr><div id=\"transdetail\"></div>";
+            echo "</table><hr>";
         }else{
             exit("<br /><br />There are no transactions for this drug.");
         }
