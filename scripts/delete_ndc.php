@@ -16,7 +16,7 @@ if (!$db) {
     }
     $update=$db->query("UPDATE ".$ndctable." SET Active=False WHERE ID=".$_POST['ndcid'].";");
     if($update){
-                echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=drugadmin\" /></head><h2>NDC Deleted.</h2></html>";
+                echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog2/index.php?page=drugadmin\" /></head><h2>NDC Deleted.</h2></html>";
     }
     
 }

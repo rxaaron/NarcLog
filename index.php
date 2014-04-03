@@ -110,11 +110,9 @@
     </head>
     <body>
         <div id="banner">
-            <a href="http://gmapserver.grcs.local/"><img src="rsc/GMAP_Logo.png" alt="GMAP/Encore" width ="250" height="100"></a>
+            <a href="http://gmapserver.grcs.local/">Testing<br>Version</a>
         </div>            
         <div id="menu">
-            <a>
-            <input type="checkbox" id="slowness" />Fast Search</a>
             <h2>Entry</h2>
             <a href="index.php" onclick="return changepage('newrx.php');">Dispense RX</a>
             <a href="index.php" onclick="return changepage('newinvoice.php');">Receive Order</a>

@@ -76,7 +76,7 @@
         $querytext="INSERT INTO ".$permission_table." (EmployeeID, DrugAdd, DrugEdit, BackCount, EnterRx, EnterInvoice, EditTransaction, HistoryReports, AdminReports, RPh, Administrator, Active) VALUES (".$id.",".$drugadd.",".$drugedit.",".$backcount.",".$enterrx.",".$enterinvoice.",".$edittransaction.",".$historyreports.",".$adminreports.",".$rph.",".$administrator.",".$active.");";
         $update=$db->query($querytext);
         if($update){
-            echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=useradmin\" /></head><h2>User Administration Successful!</h2></html>";
+            echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog2/index.php?page=useradmin\" /></head><h2>User Administration Successful!</h2></html>";
         }else{
             echo $querytext;
         }

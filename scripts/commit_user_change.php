@@ -76,7 +76,7 @@
         $querytext="UPDATE ".$permission_table." SET DrugAdd=".$drugadd.", DrugEdit=".$drugedit.", BackCount=".$backcount.", EnterRx=".$enterrx.", EnterInvoice=".$enterinvoice.", EditTransaction=".$edittransaction.", HistoryReports=".$historyreports.", AdminReports=".$adminreports.", RPh=".$rph.", Administrator=".$administrator.", Active=".$active." WHERE ID=".$id.";";
         $update=$db->query($querytext);
         if($update){
-            echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=useradmin\" /></head><h2>User Administration Successful!</h2></html>";
+            echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog2/index.php?page=useradmin\" /></head><h2>User Administration Successful!</h2></html>";
         }else{
             echo $querytext;
         }

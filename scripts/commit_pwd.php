@@ -28,7 +28,7 @@
             if($check->num_rows>0){
                 $query=$db->query("UPDATE Employee SET Password='".$np1."' WHERE Password='".$op."';");
                 if($query){
-                    echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog/index.php?page=changepassword\" /></head><h2>Password Change Successful!</h2></html>";
+                    echo "<html><head><meta http-equiv=\"Refresh\" content=\"1;url=/narclog2/index.php?page=changepassword\" /></head><h2>Password Change Successful!</h2></html>";
                 }else{
                     Exit("There was a database error.");
                 }
